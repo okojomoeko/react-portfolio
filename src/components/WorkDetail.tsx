@@ -90,11 +90,11 @@ export const WorkDetail = (props: any) => {
         open={props.open}
       >
         <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-          {props.index != -1 ? props.data[props.index].Name : "Error"}
+          {props.index !== -1 ? props.data[props.index].Name : "Error"}
         </DialogTitle>
         <DialogContent dividers>
           <Box p={2} display="flex" justifyContent="center">
-            {props.index != -1 ? (
+            {props.index !== -1 ? (
               <img
                 src={`${props.data[props.index].ImgPath}`}
                 alt="海の写真"
@@ -108,11 +108,11 @@ export const WorkDetail = (props: any) => {
           </Box>
           <Box p={2}>
             <Typography gutterBottom>
-              {props.index != -1 ? props.data[props.index].Description : ""}
+              {props.index !== -1 ? props.data[props.index].Description : ""}
             </Typography>
           </Box>
           <Box p={2}>
-            {props.index != -1 ? (
+            {props.index !== -1 ? (
               <WorksTechnology data={props.data[props.index].Technology} />
             ) : (
               ""

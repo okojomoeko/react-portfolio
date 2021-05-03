@@ -22,9 +22,7 @@ jobs:
       - name: Install dependencies and build
         run: |
           npm ci
-          npm build
-        env:
-          CI: true
+          npm run build
 
       - name: Test
         run: |

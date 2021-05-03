@@ -8,11 +8,7 @@ import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import FolderIcon from "@material-ui/icons/Folder";
 import workTemplate from "../assets/works_template.json";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import { WorkDetail } from "./WorkDetail";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,8 +39,8 @@ type Work = {
 
 const worksList = (() => {
   let ret: Work[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (let [workProp, value] of Object.entries(workTemplate)) {
-    let descList = "";
     for (let work of value) {
       let tempwork: Work = {
         Name: work.Name,
@@ -114,7 +110,6 @@ function ListItemLink(props: ListItemProps<"a", { button?: true }>) {
 }
 
 const Works: React.FC = () => {
-  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
 

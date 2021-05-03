@@ -4,9 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, Theme } from "@material-ui/core";
 import aboutTemplate from "../assets/about_template.json";
 import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import FolderIcon from "@material-ui/icons/Folder";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme: Theme) => ({
   oneLine: {
@@ -66,9 +63,6 @@ const OneLine = (props: IOneLine) => {
       <Box p={2} className={classes.oneLine}>
         <Grid container spacing={3}>
           <Grid item xs={4} className={classes.oneLineContentImg}>
-            {/* <Avatar>
-              <FolderIcon />
-            </Avatar> */}
             <div className={classes.circle}></div>
           </Grid>
           <Grid item xs={8} className={classes.oneLineContent}>
@@ -90,6 +84,7 @@ const AboutLines = () => {
   let aboutList = [];
 
   // check about size
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (let [aboutProp, value] of Object.entries(aboutTemplate)) {
     for (let about of value) {
       aboutList.push(
