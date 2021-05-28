@@ -3,10 +3,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-scroll";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-const useStyles = makeStyles((theme) => ({
+import Switch from "@material-ui/core/Switch";
+import { FormControlLabel } from "@material-ui/core";
+
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
   },
@@ -17,11 +20,34 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
+  topButtons: {},
+  themeButtons: {},
 }));
 
-const Navbar: React.FC = () => {
+interface INavBarProps {
+  themeFlagState: {
+    themeFlag: boolean;
+  };
+  setState: React.Dispatch<
+    React.SetStateAction<{
+      themeFlag: boolean;
+    }>
+  >;
+}
+
+export const NavBar = (props: INavBarProps) => {
   const classes = useStyles();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.setState({
+      ...props.themeFlagState,
+      [event.target.name]: event.target.checked,
+    });
+  };
 
   return (
     <Fragment>
@@ -58,9 +84,18 @@ const Navbar: React.FC = () => {
             <Button color="inherit">Works</Button>
           </Link>
         </Toolbar>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={props.themeFlagState.themeFlag}
+              onChange={handleChange}
+              name="themeFlag"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+            />
+          }
+          label="Dark Theme"
+        />
       </AppBar>
     </Fragment>
   );
 };
-
-export default Navbar;

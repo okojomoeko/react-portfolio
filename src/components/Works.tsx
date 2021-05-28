@@ -10,6 +10,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import workTemplate from "../assets/works_template.json";
 import { WorkDetail } from "./WorkDetail";
+import { Work } from "../types/PortfolioTypes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,14 +29,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
-
-type Work = {
-  Name: string;
-  OverView: string;
-  Description: string;
-  ImgPath: string;
-  Technology: string[];
-};
 
 const worksList = (() => {
   let ret: Work[] = [];
