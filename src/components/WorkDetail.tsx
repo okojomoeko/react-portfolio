@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { Work } from "../types/PortfolioTypes";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -66,7 +67,11 @@ const DialogActions = withStyles((theme: Theme) => ({
   },
 }))(MuiDialogActions);
 
-const WorksTechnology = (props: any) => {
+interface IWorksTechnologyProps {
+  data: string[];
+}
+
+const WorksTechnology = (props: IWorksTechnologyProps) => {
   let worksTechnologies = [];
   for (let data of props.data) {
     worksTechnologies.push(<li>{data}</li>);
@@ -79,7 +84,14 @@ const WorksTechnology = (props: any) => {
   );
 };
 
-export const WorkDetail = (props: any) => {
+interface IWorkDetailProps {
+  handleClose: () => void;
+  open: boolean;
+  index: number;
+  data: Work[];
+}
+
+export const WorkDetail = (props: IWorkDetailProps) => {
   console.log(__dirname);
 
   return (

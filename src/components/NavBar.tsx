@@ -3,15 +3,55 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-scroll";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import clsx from "clsx";
 
-const Navbar: React.FC = () => {
+import Switch from "@material-ui/core/Switch";
+import { FormControlLabel } from "@material-ui/core";
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    display: "flex",
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  topButtons: {},
+  themeButtons: {},
+}));
+
+interface INavBarProps {
+  themeFlagState: {
+    themeFlag: boolean;
+  };
+  setState: React.Dispatch<
+    React.SetStateAction<{
+      themeFlag: boolean;
+    }>
+  >;
+}
+
+export const NavBar = (props: INavBarProps) => {
+  const classes = useStyles();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.setState({
+      ...props.themeFlagState,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
   return (
     <Fragment>
-      <AppBar
-        color="default"
-        position="sticky"
-        style={{ alignItems: "center" }}
-      >
+      <AppBar position="sticky" className={clsx(classes.appBar)}>
         <Toolbar>
           <Link
             activeClass="active"
@@ -44,9 +84,18 @@ const Navbar: React.FC = () => {
             <Button color="inherit">Works</Button>
           </Link>
         </Toolbar>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={props.themeFlagState.themeFlag}
+              onChange={handleChange}
+              name="themeFlag"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+            />
+          }
+          label="Dark Theme"
+        />
       </AppBar>
     </Fragment>
   );
 };
-
-export default Navbar;

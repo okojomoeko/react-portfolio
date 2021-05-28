@@ -5,7 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import interestTemplate from "../assets/interests_template.json";
-import ComputerIcon from "@material-ui/icons/Computer";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles({
   root: {
@@ -52,7 +52,7 @@ const Interests: React.FC = () => {
         <Box display="flex" justifyContent="center" p={1} id={"Interests"}>
           <Typography variant="h3">Interests</Typography>
         </Box>
-        <ComputerIcon className={classes.icon} />
+        <FavoriteIcon className={classes.icon} />
         <InterestsDescription />
       </Box>
     </Fragment>
