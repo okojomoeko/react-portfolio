@@ -49,13 +49,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 //   );
 // }
 
-interface IOneLine {
+interface IOneLineProps {
   yearHeader: string;
   mainHeader: string;
   description: string;
 }
 
-const OneLine = (props: IOneLine) => {
+const OneLine = (props: IOneLineProps) => {
   const classes = useStyles();
 
   return (
