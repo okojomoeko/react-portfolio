@@ -81,7 +81,7 @@ export const NavBar = (props: INavBarProps) => {
             offset={-70}
             duration={500}
           >
-            <Button color="inherit">Works</Button>
+            <Button color="inherit">WORKS</Button>
           </Link>
         </Toolbar>
         <FormControlLabel
