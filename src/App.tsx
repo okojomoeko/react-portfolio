@@ -12,7 +12,6 @@ function App() {
   const [themeFlagState, setthemeFlagState] = React.useState({
     themeFlag: true,
   });
-  console.log(themeFlagState);
 
   const theme = React.useMemo(
     () =>

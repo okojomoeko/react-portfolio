@@ -1,27 +1,26 @@
-import React from "react";
-import { act, render, RenderOptions, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "../App";
-import { unmountComponentAtNode } from "react-dom";
 
-let container: any;
 beforeEach(() => {
   // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
 });
 
 afterEach(() => {
   // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
 });
 
 test("renders learn react link", () => {
-  act(() => {
-    render(<App />, container);
-  });
-  console.log(container.innerHTML);
-  // const linkElement = screen.getByText(/Skills/i);
-  // expect(linkElement).toBeInTheDocument();
+  const { container, getAllByRole } = render(<App />);
+  const buttons = getAllByRole("button");
+
+  const headerButtons = buttons.slice(0, 3);
+
+  const expectHeadderButtons = ["ABOUT", "SKILLS", "WORKS"];
+
+  let count = 0;
+  for (let button of headerButtons) {
+    expect(button.outerHTML).toContain(expectHeadderButtons[count]);
+    count++;
+  }
+  expect(container.innerHTML).toMatchSnapshot();
 });

@@ -92,8 +92,6 @@ interface IWorkDetailProps {
 }
 
 export const WorkDetail = (props: IWorkDetailProps) => {
-  console.log(__dirname);
-
   return (
     <Fragment>
       <Dialog

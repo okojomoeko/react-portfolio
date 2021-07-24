@@ -72,23 +72,16 @@ const WorkOverview = (props: any) => {
 const renderWorkItem = (props: any) => {
   const { index, data, handleOpen } = props;
   return (
-    <Fragment>
+    <Fragment key={data.Name}>
       <ListItem
         onClick={(event) => {
           handleOpen(event, index);
         }}
-        key={index}
       >
         <ListItemLink>
           <ListItemAvatar>
             <Avatar>
-              <img
-                src={`${data.ImgPath}`}
-                alt="海の写真"
-                title="空と海"
-                width="100%"
-                height="auto"
-              ></img>
+              <img src={`${data.ImgPath}`} width="100%" height="auto"></img>
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={data.Name} secondary={data.OverView} />
