@@ -81,7 +81,12 @@ const renderWorkItem = (props: any) => {
         <ListItemLink>
           <ListItemAvatar>
             <Avatar>
-              <img src={`${data.ImgPath}`} width="100%" height="auto"></img>
+              <img
+                src={`${data.ImgPath}`}
+                alt={data.Name}
+                width="100%"
+                height="auto"
+              ></img>
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={data.Name} secondary={data.OverView} />
