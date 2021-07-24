@@ -72,12 +72,11 @@ const WorkOverview = (props: any) => {
 const renderWorkItem = (props: any) => {
   const { index, data, handleOpen } = props;
   return (
-    <Fragment>
+    <Fragment key={data.Name}>
       <ListItem
         onClick={(event) => {
           handleOpen(event, index);
         }}
-        key={index}
       >
         <ListItemLink>
           <ListItemAvatar>

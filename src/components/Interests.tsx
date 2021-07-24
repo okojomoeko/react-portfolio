@@ -30,7 +30,7 @@ const InterestsDescription: React.FC = () => {
       descList += ` ${description} / `;
     }
     interestsList.push(
-      <Box display="flex" justifyContent="center" p={1}>
+      <Box display="flex" justifyContent="center" p={1} key={interestType}>
         <Card className={classes.root}>
           <CardContent>
             <Typography variant="h6">{interestType}</Typography>

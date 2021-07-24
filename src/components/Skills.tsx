@@ -30,7 +30,7 @@ const SkillsDescription: React.FC = () => {
       descList += ` ${description} / `;
     }
     skillsList.push(
-      <Box display="flex" justifyContent="center" p={1}>
+      <Box display="flex" justifyContent="center" p={1} key={skillType}>
         <Card className={classes.root}>
           <CardContent>
             <Typography variant="h6">{skillType}</Typography>

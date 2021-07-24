@@ -88,7 +88,7 @@ const AboutLines = () => {
   for (let [aboutProp, value] of Object.entries(aboutTemplate)) {
     for (let about of value) {
       aboutList.push(
-        <Fragment>
+        <Fragment key={about.YearHeader}>
           <li>
             <OneLine
               yearHeader={about.YearHeader}
