@@ -1,8 +1,8 @@
-import { Box, Card, CardContent, styled, Typography } from "@mui/material";
+import { Box, Card, CardContent,Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import ComputerIcon from '@mui/icons-material/Computer';
 import skillTemplate from "../assets/skills_template.json";
-
+import { styled } from "@mui/material/styles";
 
 const StyledCard = styled(Card)({
   width: "100%",
