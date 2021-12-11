@@ -1,29 +1,7 @@
 import React, { Fragment } from "react";
-
 import { Link } from "react-scroll";
-import { makeStyles, Theme } from "@material-ui/core/styles";
-import clsx from "clsx";
-
 import { AppBar, Button, FormControlLabel, Switch, Toolbar } from "@mui/material";
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    display: "flex",
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  topButtons: {},
-  themeButtons: {},
-}));
+import { styled } from "@mui/material/styles";
 
 interface INavBarProps {
   themeFlagState: {
@@ -36,8 +14,20 @@ interface INavBarProps {
   >;
 }
 
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+}));
+
 export const NavBar = (props: INavBarProps) => {
-  const classes = useStyles();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setState({
@@ -48,7 +38,7 @@ export const NavBar = (props: INavBarProps) => {
 
   return (
     <Fragment>
-      <AppBar position="sticky" className={clsx(classes.appBar)}>
+      <StyledAppBar position="sticky">
         <Toolbar>
           <Link
             activeClass="active"
@@ -92,7 +82,7 @@ export const NavBar = (props: INavBarProps) => {
           }
           label="Dark Theme"
         />
-      </AppBar>
+      </StyledAppBar>
     </Fragment>
   );
 };
