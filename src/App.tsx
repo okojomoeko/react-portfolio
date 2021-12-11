@@ -5,8 +5,7 @@ import About from "./components/About";
 import { NavBar } from "./components/NavBar";
 import Works from "./components/Works";
 import SkillsAndInterests from "./components/SkillsAndInterests";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
   const [themeFlagState, setthemeFlagState] = React.useState({
@@ -17,7 +16,7 @@ function App() {
     () =>
       createTheme({
         palette: {
-          type: themeFlagState.themeFlag ? "dark" : "light",
+          mode: themeFlagState.themeFlag ? "dark" : "light",
         },
       }),
     [themeFlagState]
