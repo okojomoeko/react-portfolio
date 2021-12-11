@@ -1,13 +1,10 @@
 import React, { Fragment } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
+
 import { Link } from "react-scroll";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import clsx from "clsx";
 
-import Switch from "@material-ui/core/Switch";
-import { FormControlLabel } from "@material-ui/core";
+import { AppBar, Button, FormControlLabel, Switch, Toolbar } from "@mui/material";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
