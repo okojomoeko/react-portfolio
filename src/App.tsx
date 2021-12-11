@@ -5,7 +5,7 @@ import About from "./components/About";
 import { NavBar } from "./components/NavBar";
 import Works from "./components/Works";
 import SkillsAndInterests from "./components/SkillsAndInterests";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   const theme = React.useMemo(
     () =>
-      createMuiTheme({
+      createTheme({
         palette: {
           type: themeFlagState.themeFlag ? "dark" : "light",
         },
