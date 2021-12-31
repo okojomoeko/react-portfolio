@@ -1,19 +1,12 @@
 import React, { Fragment } from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
 
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import workTemplate from "../assets/works_template.json";
 import { WorkDetail } from "./WorkDetail";
 import { Work } from "../types/PortfolioTypes";
+import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemProps, ListItemText, styled, Typography } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+const StyledList = styled(List)(({theme}) => ({
+    root: {
     width: 770,
     maxWidth: "100%",
   },
@@ -50,7 +43,7 @@ const worksList = (() => {
 
 const WorkOverview = (props: any) => {
   // let worksList = [];
-  const classes = useStyles();
+  // const classes = useStyles();
   let count = 0;
   let renderWorkItems = [];
   for (let work of worksList) {
@@ -63,7 +56,7 @@ const WorkOverview = (props: any) => {
   return (
     <Fragment>
       <Box display="flex" justifyContent="center" p={1}>
-        <List className={classes.root}>{renderWorkItems}</List>
+        <StyledList >{renderWorkItems}</StyledList>
       </Box>
     </Fragment>
   );
