@@ -4,7 +4,7 @@ import { useWindowHeight } from '@react-hook/window-size';
 export default function HeroSection() {
   const onlyHeight = useWindowHeight();
   let height = onlyHeight > 1200 ? 1200 : onlyHeight;
-  console.log(height);
+
   return (
     <>
       <motion.h1

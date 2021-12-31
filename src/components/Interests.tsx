@@ -18,13 +18,6 @@ const StyledFavoriteIcon = styled(FavoriteIcon)({
   borderRadius: '100%',
 });
 
-const StyledFavoriteIcon = styled(FavoriteIcon)({
-  padding: '10px',
-  fontSize: '90px',
-  backgroundColor: 'skyblue',
-  borderRadius: '100%',
-});
-
 const InterestsDescription: React.FC = () => {
   let interestsList = [];
 
