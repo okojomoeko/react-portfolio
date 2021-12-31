@@ -1,15 +1,14 @@
-import React from "react";
-import "./App.css";
-import About from "./components/About";
+import React from 'react';
+import './App.css';
+import About from './components/About';
 
-import { NavBar } from "./components/NavBar";
-import Works from "./components/Works";
-import SkillsAndInterests from "./components/SkillsAndInterests";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import HeroSection from "./components/Hero";
+import { NavBar } from './components/NavBar';
+import Works from './components/Works';
+import SkillsAndInterests from './components/SkillsAndInterests';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import HeroSection from './components/Hero';
 
 function App() {
-
   const [themeFlagState, setthemeFlagState] = React.useState({
     themeFlag: true,
   });
@@ -17,12 +16,11 @@ function App() {
   // TODO: for dark mode
   // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-
   const theme = React.useMemo(
     () =>
       createTheme({
         palette: {
-          mode: themeFlagState.themeFlag ? "dark" : "light",
+          mode: themeFlagState.themeFlag ? 'dark' : 'light',
         },
       }),
     [themeFlagState]

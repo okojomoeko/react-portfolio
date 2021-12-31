@@ -1,26 +1,36 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import workTemplate from "../assets/works_template.json";
-import { WorkDetail } from "./WorkDetail";
-import { Work } from "../types/PortfolioTypes";
-import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemProps, ListItemText, styled, Typography } from "@mui/material";
+import workTemplate from '../assets/works_template.json';
+import { WorkDetail } from './WorkDetail';
+import { Work } from '../types/PortfolioTypes';
+import {
+  Avatar,
+  Box,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemProps,
+  ListItemText,
+  styled,
+  Typography,
+} from '@mui/material';
 
 import { useInView } from 'react-intersection-observer';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-const StyledList = styled(List)(({theme}) => ({
-    root: {
+const StyledList = styled(List)(({ theme }) => ({
+  root: {
     width: 770,
-    maxWidth: "100%",
+    maxWidth: '100%',
   },
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -50,22 +60,14 @@ const WorkOverview = (props: any) => {
   let count = 0;
   let renderWorkItems = [];
   for (let work of worksList) {
-    renderWorkItems.push(
-      renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen })
-    );
+    renderWorkItems.push(renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen }));
     count++;
   }
 
   return (
     <Fragment>
-      <Box display="flex" justifyContent="center" p={1}>
-
-        <StyledList >
-
-            {renderWorkItems}
-
-        </StyledList>
-
+      <Box display='flex' justifyContent='center' p={1}>
+        <StyledList>{renderWorkItems}</StyledList>
       </Box>
     </Fragment>
   );
@@ -75,35 +77,34 @@ const renderWorkItem = (props: any) => {
   const { index, data, handleOpen } = props;
   return (
     <Fragment key={data.Name}>
-      <motion.div animate={{ scale: [0,1] }} transition={{ duration: 0.5}} initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: false }}>
-      <ListItem
-        onClick={(event) => {
-          handleOpen(event, index);
-        }}
+      <motion.div
+        animate={{ scale: [0, 1] }}
+        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
       >
-        <ListItemLink>
-          <ListItemAvatar>
-            <Avatar>
-              <img
-                src={`${data.ImgPath}`}
-                alt={data.Name}
-                width="100%"
-                height="auto"
-              ></img>
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={data.Name} secondary={data.OverView} />
-        </ListItemLink>
+        <ListItem
+          onClick={(event) => {
+            handleOpen(event, index);
+          }}
+        >
+          <ListItemLink>
+            <ListItemAvatar>
+              <Avatar>
+                <img src={`${data.ImgPath}`} alt={data.Name} width='100%' height='auto'></img>
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={data.Name} secondary={data.OverView} />
+          </ListItemLink>
         </ListItem>
-        </motion.div>
+      </motion.div>
     </Fragment>
   );
 };
 
-function ListItemLink(props: ListItemProps<"a", { button?: true }>) {
-  return <ListItem button component="a" {...props} />;
+function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
+  return <ListItem button component='a' {...props} />;
 }
 
 const Works: React.FC = () => {
@@ -113,44 +114,30 @@ const Works: React.FC = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
-  ) => {
+  const handleOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
     setSelectedIndex(index);
     setOpen(true);
   };
 
   const [ref, inView] = useInView({
     rootMargin: '-30px 0px',
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   return (
     <Fragment>
-      <Box p={2} ref={ref} id={"Works"}>
-        {inView &&
-          (
+      <Box p={2} ref={ref} id={'Works'}>
+        {inView && (
+          <>
+            <Box display='flex' justifyContent='center' p={1}>
+              <Typography variant='h3'>Works</Typography>
+            </Box>
 
-        <>
-        <Box display="flex" justifyContent="center" p={1} >
-            <Typography variant="h3">Works</Typography>
-      </Box>
+            <WorkOverview handleOpen={handleOpen} />
 
-          <WorkOverview handleOpen={handleOpen} />
-
-
-            <WorkDetail
-                handleClose={handleClose}
-                open={open}
-                index={selectedIndex}
-              data={worksList} />
-</>
-         )
-       }
-
-
-
+            <WorkDetail handleClose={handleClose} open={open} index={selectedIndex} data={worksList} />
+          </>
+        )}
       </Box>
     </Fragment>
   );

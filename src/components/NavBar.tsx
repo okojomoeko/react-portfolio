@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import { Link } from "react-scroll";
-import { AppBar, Button, Toolbar } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import React, { Fragment } from 'react';
+import { Link } from 'react-scroll';
+import { AppBar, Button, Toolbar } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 interface INavBarProps {
   themeFlagState: {
@@ -14,22 +14,20 @@ interface INavBarProps {
   >;
 }
 
-
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
+  transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  alignItems: "center",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "right",
-  backgroundColor: "rgba(0,0,0,0.9)"
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'right',
+  backgroundColor: 'rgba(0,0,0,0.9)',
 }));
 
 export const NavBar = (props: INavBarProps) => {
-
   // TODO: dark mode switch
   // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   props.setState({
@@ -40,37 +38,16 @@ export const NavBar = (props: INavBarProps) => {
 
   return (
     <Fragment>
-      <StyledAppBar position="sticky">
+      <StyledAppBar position='sticky'>
         <Toolbar>
-          <Link
-            activeClass="active"
-            to="About"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            <Button color="inherit">ABOUT</Button>
+          <Link activeClass='active' to='About' spy={true} smooth={true} offset={-70} duration={500}>
+            <Button color='inherit'>ABOUT</Button>
           </Link>
-          <Link
-            activeClass="active"
-            to="Skills"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            <Button color="inherit">SKILLS & INTEREST</Button>
+          <Link activeClass='active' to='Skills' spy={true} smooth={true} offset={-70} duration={500}>
+            <Button color='inherit'>SKILLS & INTEREST</Button>
           </Link>
-          <Link
-            activeClass="active"
-            to="Works"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            <Button color="inherit">WORKS</Button>
+          <Link activeClass='active' to='Works' spy={true} smooth={true} offset={-70} duration={500}>
+            <Button color='inherit'>WORKS</Button>
           </Link>
         </Toolbar>
         {/* <FormControlLabel
