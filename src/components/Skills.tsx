@@ -1,28 +1,22 @@
+import { Box, Card, CardContent,Typography } from "@mui/material";
 import React, { Fragment } from "react";
-import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import ComputerIcon from '@mui/icons-material/Computer';
 import skillTemplate from "../assets/skills_template.json";
-import ComputerIcon from "@material-ui/icons/Computer";
+import { styled } from "@mui/material/styles";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    // maxWidth: "100%",
-  },
-  icon: {
-    padding: "10px",
-    fontSize: "90px",
-    backgroundColor: "skyblue",
-    borderRadius: "100%",
-  },
+const StyledCard = styled(Card)({
+  width: "100%",
+});
+
+const StyledComputerIcon = styled(ComputerIcon)({
+  padding: "10px",
+  fontSize: "90px",
+  backgroundColor: "skyblue",
+  borderRadius: "100%",
 });
 
 const SkillsDescription: React.FC = () => {
   let skillsList = [];
-  const classes = useStyles();
 
   for (let [skillType, value] of Object.entries(skillTemplate)) {
     let descList = "/";
@@ -31,12 +25,12 @@ const SkillsDescription: React.FC = () => {
     }
     skillsList.push(
       <Box display="flex" justifyContent="center" p={1} key={skillType}>
-        <Card className={classes.root}>
+        <StyledCard >
           <CardContent>
             <Typography variant="h6">{skillType}</Typography>
             <Typography color="textSecondary">{descList}</Typography>
           </CardContent>
-        </Card>
+        </StyledCard>
       </Box>
     );
   }
@@ -44,7 +38,6 @@ const SkillsDescription: React.FC = () => {
 };
 
 const Skills: React.FC = () => {
-  const classes = useStyles();
 
   return (
     <Fragment>
@@ -52,7 +45,7 @@ const Skills: React.FC = () => {
         <Box display="flex" justifyContent="center" p={1} id={"Skills"}>
           <Typography variant="h3">Skills</Typography>
         </Box>
-        <ComputerIcon className={classes.icon} />
+        <StyledComputerIcon />
 
         <SkillsDescription />
       </Box>
