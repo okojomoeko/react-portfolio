@@ -1,42 +1,10 @@
+import { Box, Grid, Typography } from "@mui/material";
 import React, { Fragment } from "react";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles, Theme } from "@material-ui/core";
+import { styled } from "@mui/material/styles";
+
 import aboutTemplate from "../assets/about_template.json";
-import Grid from "@material-ui/core/Grid";
+import ContentWrapper from "../styles/ContentWrapper";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  oneLine: {
-    display: "flex",
-    justifyContent: "space-between",
-    // paddingLeft: "15%",
-    // paddingRight: "15%",
-  },
-  oneLineContent: {
-    textAlign: "left",
-  },
-  oneLineContentImg: {
-    textAlign: "right",
-    alignItems: "center",
-  },
-  appLink: {
-    color: "#61dafb",
-  },
-
-  circle: {
-    borderRadius: "100%",
-    background: "skyblue",
-    margin: "10px auto",
-    [theme.breakpoints.down("sm")]: {
-      width: "50px",
-      height: "50px",
-    },
-    [theme.breakpoints.up("md")]: {
-      width: "100px",
-      height: "100px",
-    },
-  },
-}));
 
 // useMediaQuery hookを用いてレスポンシブデザインに対応するのもありか
 
@@ -49,6 +17,35 @@ const useStyles = makeStyles((theme: Theme) => ({
 //   );
 // }
 
+const StyledBox = styled(Box)({
+  display: "flex",
+  justifyContent: "space-between",
+});
+
+const StyledContentImg = styled(Grid)({
+  textAlign: "right",
+  alignItems: "center",
+});
+
+const StyledContent = styled(Grid)({
+  textAlign: "left",
+});
+
+const Circle = styled(ContentWrapper)(({theme}) => ({
+  borderRadius: "100%",
+  background: "skyblue",
+  margin: "10px auto",
+  [theme.breakpoints.down("md")]: {
+    width: "50px",
+    height: "50px",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "100px",
+    height: "100px",
+  },
+}));
+
+
 interface IOneLineProps {
   yearHeader: string;
   mainHeader: string;
@@ -56,16 +53,15 @@ interface IOneLineProps {
 }
 
 const OneLine = (props: IOneLineProps) => {
-  const classes = useStyles();
 
   return (
     <Fragment>
-      <Box p={2} className={classes.oneLine}>
+      <StyledBox p={2} >
         <Grid container spacing={3}>
-          <Grid item xs={4} className={classes.oneLineContentImg}>
-            <div className={classes.circle}></div>
-          </Grid>
-          <Grid item xs={8} className={classes.oneLineContent}>
+          <StyledContentImg item xs={4} >
+            <Circle />
+          </StyledContentImg>
+          <StyledContent item xs={8} >
             <Typography variant="h5">
               <b>{props.yearHeader}</b>
             </Typography>
@@ -73,9 +69,9 @@ const OneLine = (props: IOneLineProps) => {
               <b>{props.mainHeader}</b>
             </Typography>
             {props.description}
-          </Grid>
+          </StyledContent>
         </Grid>
-      </Box>
+      </StyledBox>
     </Fragment>
   );
 };
