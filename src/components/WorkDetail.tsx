@@ -1,8 +1,18 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, styled, Typography } from "@mui/material";
-import React, { Fragment } from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  styled,
+  Typography,
+} from '@mui/material';
+import React, { Fragment } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { Work } from "../types/PortfolioTypes";
+import { Work } from '../types/PortfolioTypes';
 
 export interface DialogTitleProps {
   id: string;
@@ -10,7 +20,7 @@ export interface DialogTitleProps {
   onClose: () => void;
 }
 
-const StyledIconButton = styled(IconButton)(({theme}) => ({
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
   // position: "absolute",
   right: theme.spacing(1),
   top: theme.spacing(1),
@@ -21,23 +31,20 @@ const StyledDialogTitle = (props: DialogTitleProps) => {
   const { children, onClose, ...other } = props;
   return (
     <DialogTitle {...other}>
-      <Typography variant="h6">{children}</Typography>
+      <Typography variant='h6'>{children}</Typography>
       {onClose ? (
-        <StyledIconButton
-          aria-label="close"
-          onClick={onClose}
-        >
+        <StyledIconButton aria-label='close' onClick={onClose}>
           <CloseIcon />
         </StyledIconButton>
       ) : null}
     </DialogTitle>
   );
 };
-const StyledDialogContent = styled(DialogContent)(({theme}) => ({
+const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const StyledDialogActions = styled(DialogActions)(({theme}) => ({
+const StyledDialogActions = styled(DialogActions)(({ theme }) => ({
   margin: 0,
   padding: theme.spacing(1),
 }));
@@ -69,43 +76,31 @@ interface IWorkDetailProps {
 export const WorkDetail = (props: IWorkDetailProps) => {
   return (
     <Fragment>
-      <Dialog
-        onClose={props.handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={props.open}
-      >
-        <StyledDialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-          {props.index !== -1 ? props.data[props.index].Name : "Error"}
+      <Dialog onClose={props.handleClose} aria-labelledby='customized-dialog-title' open={props.open}>
+        <StyledDialogTitle id='customized-dialog-title' onClose={props.handleClose}>
+          {props.index !== -1 ? props.data[props.index].Name : 'Error'}
         </StyledDialogTitle>
         <StyledDialogContent dividers>
-          <Box p={2} display="flex" justifyContent="center">
+          <Box p={2} display='flex' justifyContent='center'>
             {props.index !== -1 ? (
               <img
                 src={`${props.data[props.index].ImgPath}`}
-                alt="海の写真"
-                title="空と海"
-                width="70%"
-                height="auto"
+                alt='海の写真'
+                title='空と海'
+                width='70%'
+                height='auto'
               ></img>
             ) : (
-              ""
+              ''
             )}
           </Box>
           <Box p={2}>
-            <Typography gutterBottom>
-              {props.index !== -1 ? props.data[props.index].Description : ""}
-            </Typography>
+            <Typography gutterBottom>{props.index !== -1 ? props.data[props.index].Description : ''}</Typography>
           </Box>
-          <Box p={2}>
-            {props.index !== -1 ? (
-              <WorksTechnology data={props.data[props.index].Technology} />
-            ) : (
-              ""
-            )}
-          </Box>
+          <Box p={2}>{props.index !== -1 ? <WorksTechnology data={props.data[props.index].Technology} /> : ''}</Box>
         </StyledDialogContent>
         <StyledDialogActions>
-          <Button autoFocus onClick={props.handleClose} color="primary">
+          <Button autoFocus onClick={props.handleClose} color='primary'>
             閉じる
           </Button>
         </StyledDialogActions>

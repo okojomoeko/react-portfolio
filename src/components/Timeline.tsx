@@ -1,10 +1,10 @@
-import { Box, Grid, Typography } from "@mui/material";
-import React, { Fragment } from "react";
-import { styled } from "@mui/material/styles";
+import { Box, Grid, Typography } from '@mui/material';
+import React, { Fragment } from 'react';
+import { styled } from '@mui/material/styles';
 
-import aboutTemplate from "../assets/about_template.json";
-import ContentWrapper from "../styles/ContentWrapper";
-
+import aboutTemplate from '../assets/about_template.json';
+import ContentWrapper from '../styles/ContentWrapper';
+import { motion } from 'framer-motion';
 
 // useMediaQuery hookを用いてレスポンシブデザインに対応するのもありか
 
@@ -18,33 +18,32 @@ import ContentWrapper from "../styles/ContentWrapper";
 // }
 
 const StyledBox = styled(Box)({
-  display: "flex",
-  justifyContent: "space-between",
+  display: 'flex',
+  justifyContent: 'space-between',
 });
 
 const StyledContentImg = styled(Grid)({
-  textAlign: "right",
-  alignItems: "center",
+  textAlign: 'right',
+  alignItems: 'center',
 });
 
 const StyledContent = styled(Grid)({
-  textAlign: "left",
+  textAlign: 'left',
 });
 
-const Circle = styled(ContentWrapper)(({theme}) => ({
-  borderRadius: "100%",
-  background: "skyblue",
-  margin: "10px auto",
-  [theme.breakpoints.down("md")]: {
-    width: "50px",
-    height: "50px",
+const Circle = styled(ContentWrapper)(({ theme }) => ({
+  borderRadius: '100%',
+  background: 'skyblue',
+  margin: '10px auto',
+  [theme.breakpoints.down('md')]: {
+    width: '50px',
+    height: '50px',
   },
-  [theme.breakpoints.up("md")]: {
-    width: "100px",
-    height: "100px",
+  [theme.breakpoints.up('md')]: {
+    width: '100px',
+    height: '100px',
   },
 }));
-
 
 interface IOneLineProps {
   yearHeader: string;
@@ -53,19 +52,18 @@ interface IOneLineProps {
 }
 
 const OneLine = (props: IOneLineProps) => {
-
   return (
     <Fragment>
-      <StyledBox p={2} >
+      <StyledBox p={2}>
         <Grid container spacing={3}>
-          <StyledContentImg item xs={4} >
+          <StyledContentImg item xs={4}>
             <Circle />
           </StyledContentImg>
-          <StyledContent item xs={8} >
-            <Typography variant="h5">
+          <StyledContent item xs={8}>
+            <Typography variant='h5'>
               <b>{props.yearHeader}</b>
             </Typography>
-            <Typography variant="h5">
+            <Typography variant='h5'>
               <b>{props.mainHeader}</b>
             </Typography>
             {props.description}
@@ -85,13 +83,17 @@ const AboutLines = () => {
     for (let about of value) {
       aboutList.push(
         <Fragment key={about.YearHeader}>
-          <li>
-            <OneLine
-              yearHeader={about.YearHeader}
-              mainHeader={about.MainHeader}
-              description={about.Description}
-            />
-          </li>
+          <motion.div
+            animate={{ scale: [0, 1] }}
+            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false }}
+          >
+            <li>
+              <OneLine yearHeader={about.YearHeader} mainHeader={about.MainHeader} description={about.Description} />
+            </li>
+          </motion.div>
         </Fragment>
       );
     }
@@ -102,7 +104,7 @@ const AboutLines = () => {
 const Timeline: React.FC = () => {
   return (
     <Fragment>
-      <Box display="flex" justifyContent="center">
+      <Box display='flex' justifyContent='center'>
         <ul>
           <AboutLines />
         </ul>
