@@ -6,11 +6,17 @@ import { NavBar } from "./components/NavBar";
 import Works from "./components/Works";
 import SkillsAndInterests from "./components/SkillsAndInterests";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import HeroSection from "./components/Hero";
 
 function App() {
+
   const [themeFlagState, setthemeFlagState] = React.useState({
     themeFlag: true,
   });
+
+  // TODO: for dark mode
+  // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
 
   const theme = React.useMemo(
     () =>
@@ -26,6 +32,7 @@ function App() {
       <CssBaseline />
       <div className="App">
         <NavBar themeFlagState={themeFlagState} setState={setthemeFlagState} />
+        <HeroSection />
         <About />
         <SkillsAndInterests />
         <Works />

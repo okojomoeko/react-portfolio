@@ -5,6 +5,9 @@ import { WorkDetail } from "./WorkDetail";
 import { Work } from "../types/PortfolioTypes";
 import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemProps, ListItemText, styled, Typography } from "@mui/material";
 
+import { useInView } from 'react-intersection-observer';
+import { motion } from "framer-motion";
+
 const StyledList = styled(List)(({theme}) => ({
     root: {
     width: 770,
@@ -56,7 +59,13 @@ const WorkOverview = (props: any) => {
   return (
     <Fragment>
       <Box display="flex" justifyContent="center" p={1}>
-        <StyledList >{renderWorkItems}</StyledList>
+
+        <StyledList >
+
+            {renderWorkItems}
+
+        </StyledList>
+
       </Box>
     </Fragment>
   );
@@ -66,6 +75,9 @@ const renderWorkItem = (props: any) => {
   const { index, data, handleOpen } = props;
   return (
     <Fragment key={data.Name}>
+      <motion.div animate={{ scale: [0,1] }} transition={{ duration: 0.5}} initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: false }}>
       <ListItem
         onClick={(event) => {
           handleOpen(event, index);
@@ -84,7 +96,8 @@ const renderWorkItem = (props: any) => {
           </ListItemAvatar>
           <ListItemText primary={data.Name} secondary={data.OverView} />
         </ListItemLink>
-      </ListItem>
+        </ListItem>
+        </motion.div>
     </Fragment>
   );
 };
@@ -108,19 +121,36 @@ const Works: React.FC = () => {
     setOpen(true);
   };
 
+  const [ref, inView] = useInView({
+    rootMargin: '-30px 0px',
+    triggerOnce: true
+  });
+
   return (
     <Fragment>
-      <Box p={2}>
-        <Box display="flex" justifyContent="center" p={1} id={"Works"}>
-          <Typography variant="h3">Works</Typography>
-        </Box>
-        <WorkOverview handleOpen={handleOpen} />
-        <WorkDetail
-          handleClose={handleClose}
-          open={open}
-          index={selectedIndex}
-          data={worksList}
-        />
+      <Box p={2} ref={ref} id={"Works"}>
+        {inView &&
+          (
+
+        <>
+        <Box display="flex" justifyContent="center" p={1} >
+            <Typography variant="h3">Works</Typography>
+      </Box>
+
+          <WorkOverview handleOpen={handleOpen} />
+
+
+            <WorkDetail
+                handleClose={handleClose}
+                open={open}
+                index={selectedIndex}
+              data={worksList} />
+</>
+         )
+       }
+
+
+
       </Box>
     </Fragment>
   );

@@ -1,16 +1,23 @@
 import { render, screen } from "@testing-library/react";
 import App from "../App";
+import {intersectionObserverMock} from "../__mocks__/intersectionObserverMocks";
 
 beforeEach(() => {
   // setup a DOM element as a render target
+
+  window.IntersectionObserver = jest.fn().mockImplementation(intersectionObserverMock);
 });
 
 afterEach(() => {
   // cleanup on exiting
 });
 
+
+
 test("renders learn react link", () => {
+
   const { container, getAllByRole } = render(<App />);
+
   const buttons = getAllByRole("button");
 
   const headerButtons = buttons.slice(0, 3);
