@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 import aboutTemplate from "../assets/about_template.json";
 import ContentWrapper from "../styles/ContentWrapper";
+import { motion } from "framer-motion";
 
 
 // useMediaQuery hookを用いてレスポンシブデザインに対応するのもありか
@@ -85,13 +86,17 @@ const AboutLines = () => {
     for (let about of value) {
       aboutList.push(
         <Fragment key={about.YearHeader}>
+          <motion.div animate={{ scale: [0,1] }} transition={{ duration: 0.5}} initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: false }}>
           <li>
             <OneLine
               yearHeader={about.YearHeader}
               mainHeader={about.MainHeader}
               description={about.Description}
             />
-          </li>
+            </li>
+            </motion.div>
         </Fragment>
       );
     }

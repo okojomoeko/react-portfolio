@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-scroll";
-import { AppBar, Button, FormControlLabel, Switch, Toolbar } from "@mui/material";
+import { AppBar, Button, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 interface INavBarProps {
@@ -24,17 +24,19 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   alignItems: "center",
   display: "flex",
   flexDirection: "row",
-  justifyContent: "center",
+  justifyContent: "right",
+  backgroundColor: "rgba(0,0,0,0.9)"
 }));
 
 export const NavBar = (props: INavBarProps) => {
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.setState({
-      ...props.themeFlagState,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  // TODO: dark mode switch
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   props.setState({
+  //     ...props.themeFlagState,
+  //     [event.target.name]: event.target.checked,
+  //   });
+  // };
 
   return (
     <Fragment>
@@ -71,7 +73,7 @@ export const NavBar = (props: INavBarProps) => {
             <Button color="inherit">WORKS</Button>
           </Link>
         </Toolbar>
-        <FormControlLabel
+        {/* <FormControlLabel
           control={
             <Switch
               checked={props.themeFlagState.themeFlag}
@@ -81,7 +83,7 @@ export const NavBar = (props: INavBarProps) => {
             />
           }
           label="Dark Theme"
-        />
+        /> */}
       </StyledAppBar>
     </Fragment>
   );
