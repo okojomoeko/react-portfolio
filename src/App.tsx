@@ -28,7 +28,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App">
+      <div className='App'>
         <NavBar themeFlagState={themeFlagState} setState={setthemeFlagState} />
         <HeroSection />
         <About />
