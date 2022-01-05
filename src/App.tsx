@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 
-// import About from './components/About';
-// import { NavBar } from './components/NavBar';
-// import Works from './components/Works';
-// import SkillsAndInterests from './components/SkillsAndInterests';
-// import HeroSection from './components/Hero';
+import About from './components/About';
+import { NavBar } from './components/NavBar';
+import Works from './components/Works';
+import SkillsAndInterests from './components/SkillsAndInterests';
+import HeroSection from './components/Hero';
 
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -30,11 +30,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className='App'>
-        {/* <NavBar themeFlagState={themeFlagState} setState={setthemeFlagState} />
+        <NavBar themeFlagState={themeFlagState} setState={setthemeFlagState} />
         <HeroSection />
         <About />
         <SkillsAndInterests />
-        <Works /> */}
+        <Works />
       </div>
     </ThemeProvider>
   );

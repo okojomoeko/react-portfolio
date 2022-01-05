@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import App from '../App';
 import { intersectionObserverMock } from '../__mocks__/intersectionObserverMock';
+import pretty from 'pretty';
 
 beforeEach(() => {
   // setup a DOM element as a render target
@@ -25,5 +26,5 @@ test('renders learn react link', () => {
   //   expect(button.outerHTML).toContain(expectHeadderButtons[count]);
   //   count++;
   // }
-  expect(container.innerHTML).toMatchSnapshot();
+  expect(pretty(container.innerHTML)).toMatchSnapshot();
 });

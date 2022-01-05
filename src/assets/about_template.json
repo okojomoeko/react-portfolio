@@ -1,0 +1,24 @@
+{
+  "AboutData": [
+    {
+      "YearHeader": "2012-2016",
+      "MainHeader": "某大学で情報科学勉強",
+      "Description": "ちょっとだけOpenCV触ったりした"
+    },
+    {
+      "YearHeader": "2016-2018",
+      "MainHeader": "某大学院で画像認識の勉強",
+      "Description": "ちょっとだけ機械学習とMATLABを勉強した"
+    },
+    {
+      "YearHeader": "2018-2020",
+      "MainHeader": "某電機メーカーに入社",
+      "Description": "ネットワークシステムいじり。Ciscoのルータやスイッチなど触ったりネットワークテストしたり、上流工程の開発とシステム展開した"
+    },
+    {
+      "YearHeader": "2020.5~",
+      "MainHeader": "転職",
+      "Description": "クラウドを用いたシステム開発に従事"
+    }
+  ]
+}

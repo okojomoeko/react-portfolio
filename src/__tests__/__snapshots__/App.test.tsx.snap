@@ -1,3 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders learn react link 1`] = `"<div class=\\"App\\"></div>"`;
+exports[`renders learn react link 1`] = `
+"<div class=\\"App\\">
+  <header class=\\"MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-2p1nt6-MuiPaper-root-MuiAppBar-root\\">
+    <div class=\\"MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root\\"><a><button class=\\"MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1ekild3-MuiButtonBase-root-MuiButton-root\\" tabindex=\\"0\\" type=\\"button\\">ABOUT<span class=\\"MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\\"></span></button></a><a><button class=\\"MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1ekild3-MuiButtonBase-root-MuiButton-root\\" tabindex=\\"0\\" type=\\"button\\">SKILLS &amp; INTEREST<span class=\\"MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\\"></span></button></a><a><button class=\\"MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1ekild3-MuiButtonBase-root-MuiButton-root\\" tabindex=\\"0\\" type=\\"button\\">WORKS<span class=\\"MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\\"></span></button></a></div>
+  </header>
+  <h1 style=\\"height: 0px; display: flex; justify-content: center; align-items: center; opacity: 0;\\">Hi, I'm okojomoeko!!!</h1>
+  <div class=\\"MuiBox-root css-19midj6\\" id=\\"About\\">
+    <div class=\\"MuiBox-root css-1l4w6pd\\">
+      <ul>
+        <div style=\\"opacity: 0;\\">
+          <li>
+            <div class=\\"MuiBox-root css-h575ti\\">
+              <div class=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-zow5z4-MuiGrid-root\\">
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1mgrdy8-MuiGrid-root\\">
+                  <div class=\\"css-k8ae0s\\"></div>
+                </div>
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 css-y4va2s-MuiGrid-root\\">
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>2012-2016</b></h5>
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>某大学で情報科学勉強</b></h5>ちょっとだけOpenCV触ったりした
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+        <div style=\\"opacity: 0;\\">
+          <li>
+            <div class=\\"MuiBox-root css-h575ti\\">
+              <div class=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-zow5z4-MuiGrid-root\\">
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1mgrdy8-MuiGrid-root\\">
+                  <div class=\\"css-k8ae0s\\"></div>
+                </div>
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 css-y4va2s-MuiGrid-root\\">
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>2016-2018</b></h5>
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>某大学院で画像認識の勉強</b></h5>ちょっとだけ機械学習とMATLABを勉強した
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+        <div style=\\"opacity: 0;\\">
+          <li>
+            <div class=\\"MuiBox-root css-h575ti\\">
+              <div class=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-zow5z4-MuiGrid-root\\">
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1mgrdy8-MuiGrid-root\\">
+                  <div class=\\"css-k8ae0s\\"></div>
+                </div>
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 css-y4va2s-MuiGrid-root\\">
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>2018-2020</b></h5>
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>某電機メーカーに入社</b></h5>ネットワークシステムいじり。Ciscoのルータやスイッチなど触ったりネットワークテストしたり、上流工程の開発とシステム展開した
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+        <div style=\\"opacity: 0;\\">
+          <li>
+            <div class=\\"MuiBox-root css-h575ti\\">
+              <div class=\\"MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 css-zow5z4-MuiGrid-root\\">
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-1mgrdy8-MuiGrid-root\\">
+                  <div class=\\"css-k8ae0s\\"></div>
+                </div>
+                <div class=\\"MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8 css-y4va2s-MuiGrid-root\\">
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>2020.5~</b></h5>
+                  <h5 class=\\"MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root\\"><b>転職</b></h5>クラウドを用いたシステム開発に従事
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class=\\"css-mqlmc6\\">
+    <div class=\\"MuiBox-root css-19midj6\\" id=\\"Skills\\"></div>
+    <div class=\\"MuiBox-root css-19midj6\\" id=\\"Interests\\"></div>
+  </div>
+  <div class=\\"MuiBox-root css-19midj6\\" id=\\"Works\\"></div>
+</div>"
+`;

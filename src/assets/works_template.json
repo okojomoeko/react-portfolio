@@ -1,0 +1,36 @@
+{
+  "Works": [
+    {
+      "Name": "ディズニーリアルタイム待ち時間LINE-bot",
+      "OverView": "ディズニーランド、ディズニーシーのリアルタイム待ち時間を教えてくれるLINE-bot",
+      "Description": "ディズニーランド、ディズニーシーのリアルタイム待ち時間を教えてくれるLINE-bot. LINEのトーク画面で\"land\"とか\"sea\"とか送信するとそれぞれのテーマパークのリアルタイムの待ち時間を返してくれる. GCPの無料枠で運用しているため個人用",
+      "ImgName": "disney-congestion.jpg",
+      "Technology": ["Node.js", "GoogleCloudFunctions", "LINE Message API"]
+    },
+    {
+      "Name": "水道光熱費登録LINE-bot",
+      "OverView": "水道光熱費をGoogleDrive上のエクセルに登録するLINE-bot",
+      "Description": "水道光熱費をGoogleDrive上のエクセルに登録するLINE-bot. GoogleDrive上に配置したスクリプトをLINE-botのWebHookにした（気がする）。これも個人的には結構便利で、シンプルなフォーマットで登録が可能. CRUD処理はできるようにしないとなぁ…",
+      "ImgName": "infra-register.jpg",
+      "Technology": [
+        "GoogleAppScript",
+        "GoogleCloudFunctions",
+        "LINE Message API"
+      ]
+    },
+    {
+      "Name": "Okojotter",
+      "OverView": "自分用のつぶやき専用Twitterクライアント",
+      "Description": "自分用のつぶやき専用Twitterクライアント. 昔く○いろいどというアプリを使っていたが、最新バージョンに対応しきれていなかったので自分で作成. 複数アカウント登録とか 、複数アカウントからのつぶやきとか、hash tagの保存とか、実況用に必要な機能はとりあえず追加した. ホームボタンのアシストアプリに設定できるようにしてるので便利. お気に入りなのでメンテしていきたい",
+      "ImgName": "okojotter.jpg",
+      "Technology": ["Kotlin", "Twitter4j"]
+    },
+    {
+      "Name": "メディアファイル名変更スクリプト",
+      "OverView": "メディアファイル名をメディア作成日時をもとに変更するスクリプト",
+      "Description": "自分用のメディアファイル名変更スクリプト。画像ファイルが作成された日時を元にリネームして、日付のフォルダを作成して整理する。とりあえずmp4とjpg,pngを振り分けたかったのでそれだけ対応。適当に書いているのでエラーハンドリングなし！！！",
+      "ImgName": "rename-media.gif",
+      "Technology": ["Shell Script"]
+    }
+  ]
+}
