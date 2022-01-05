@@ -3,14 +3,16 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended', 'airbnb', 'prettier'],
+  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended', "plugin:import/typescript","airbnb", "airbnb-typescript","plugin:@typescript-eslint/recommended",'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
     },
     ecmaVersion: 12,
-    sourceType: 'module'
+    sourceType: 'module',
+    project: './tsconfig.json'
+    
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -25,6 +27,7 @@ module.exports = {
         tsx: 'never'
       }
     ],
+    "react/react-in-jsx-scope": "off",
     'no-console': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-use-before-define': 'off',

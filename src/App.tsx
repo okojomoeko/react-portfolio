@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 import About from './components/About';
 import { NavBar } from './components/NavBar';
@@ -7,7 +8,6 @@ import Works from './components/Works';
 import SkillsAndInterests from './components/SkillsAndInterests';
 import HeroSection from './components/Hero';
 
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 function App() {
   const [themeFlagState, setthemeFlagState] = React.useState({
