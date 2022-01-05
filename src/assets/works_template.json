@@ -12,11 +12,7 @@
       "OverView": "水道光熱費をGoogleDrive上のエクセルに登録するLINE-bot",
       "Description": "水道光熱費をGoogleDrive上のエクセルに登録するLINE-bot. GoogleDrive上に配置したスクリプトをLINE-botのWebHookにした（気がする）。これも個人的には結構便利で、シンプルなフォーマットで登録が可能. CRUD処理はできるようにしないとなぁ…",
       "ImgName": "infra-register.jpg",
-      "Technology": [
-        "GoogleAppScript",
-        "GoogleCloudFunctions",
-        "LINE Message API"
-      ]
+      "Technology": ["GoogleAppScript", "GoogleCloudFunctions", "LINE Message API"]
     },
     {
       "Name": "Okojotter",

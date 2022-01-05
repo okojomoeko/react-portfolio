@@ -8,6 +8,7 @@
     "pre-commit": "lint-staged",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
     "start": "node builder.js",
+    "format": "prettier --write 'src/**/*.{ts,tsx,json}'",
     "build": "NODE_ENV=production node builder.js",
     "start-react-scripts": "react-scripts start",
     "test": "react-scripts test"

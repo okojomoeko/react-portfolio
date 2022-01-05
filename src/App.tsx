@@ -8,7 +8,6 @@ import Works from './components/Works';
 import SkillsAndInterests from './components/SkillsAndInterests';
 import HeroSection from './components/Hero';
 
-
 function App() {
   const [themeFlagState, setthemeFlagState] = React.useState({
     themeFlag: true,
