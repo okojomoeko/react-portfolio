@@ -1,18 +1,25 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
-  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended', "plugin:import/typescript","airbnb", "airbnb-typescript","plugin:@typescript-eslint/recommended",'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:import/typescript',
+    'airbnb',
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
-    project: './tsconfig.json'
-
+    project: './tsconfig.json',
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -24,26 +31,26 @@ module.exports = {
         js: 'never',
         jsx: 'never',
         ts: 'never',
-        tsx: 'never'
-      }
+        tsx: 'never',
+      },
     ],
-    "react/react-in-jsx-scope": "off",
+    'react/react-in-jsx-scope': 'off',
     'no-console': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-use-before-define': 'off',
     'no-unused-vars': 'warn',
-    'import/prefer-default-export': 1,
+    'import/prefer-default-export': 0,
     'no-shadow': 1,
     'prefer-const': 1,
     'prefer-spread': 1,
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
-    'quotes': ['warn', 'single']
+    quotes: ['warn', 'single'],
   },
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
-  }
-}
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+};
