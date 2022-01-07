@@ -12,7 +12,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
     project: './tsconfig.json'
-    
+
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
@@ -36,7 +36,8 @@ module.exports = {
     'no-shadow': 1,
     'prefer-const': 1,
     'prefer-spread': 1,
-    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }]
+    'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
+    'quotes': ['warn', 'single']
   },
   settings: {
     'import/resolver': {

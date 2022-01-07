@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import interestTemplate from '../assets/interests_template.json';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { styled } from '@mui/material/styles';
 import { useInView } from 'react-intersection-observer';
 import FadeIn from 'react-fade-in';
 import { motion } from 'framer-motion';
+import interestTemplate from '../assets/interests_template.json';
 
 const StyledCard = styled(Card)({
   width: '100%',
@@ -19,11 +19,11 @@ const StyledFavoriteIcon = styled(FavoriteIcon)({
 });
 
 const InterestsDescription: React.FC = () => {
-  let interestsList = [];
+  const interestsList = [];
 
-  for (let [interestType, value] of Object.entries(interestTemplate)) {
+  for (const [interestType, value] of Object.entries(interestTemplate)) {
     let descList = '/';
-    for (let description of value) {
+    for (const description of value) {
       descList += ` ${description} / `;
     }
     interestsList.push(
@@ -46,9 +46,9 @@ const InterestsDescription: React.FC = () => {
     );
   }
   return (
-    <Fragment>
+    <>
       <FadeIn>{interestsList}</FadeIn>
-    </Fragment>
+    </>
   );
 };
 
@@ -58,8 +58,8 @@ const Interests: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <Fragment>
-      <Box p={2} id={'Interests'} ref={ref}>
+    <>
+      <Box p={2} id='Interests' ref={ref}>
         {inView && (
           <>
             <Box display='flex' justifyContent='center' p={1}>
@@ -70,7 +70,7 @@ const Interests: React.FC = () => {
           </>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

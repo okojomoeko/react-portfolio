@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
 
-import workTemplate from '../assets/works_template.json';
-import { WorkDetail } from './WorkDetail';
-import { Work } from '../types/PortfolioTypes';
 import {
   Avatar,
   Box,
@@ -14,9 +11,11 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import workTemplate from '../assets/works_template.json';
+import { WorkDetail } from './WorkDetail';
+import { Work } from '../types/PortfolioTypes';
 
 const StyledList = styled(List)(({ theme }) => ({
   root: {
@@ -37,11 +36,11 @@ const StyledList = styled(List)(({ theme }) => ({
 }));
 
 const worksList = (() => {
-  let ret: Work[] = [];
+  const ret: Work[] = [];
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (let [workProp, value] of Object.entries(workTemplate)) {
-    for (let work of value) {
-      let tempwork: Work = {
+  for (const [workProp, value] of Object.entries(workTemplate)) {
+    for (const work of value) {
+      const tempwork: Work = {
         Name: work.Name,
         OverView: work.OverView,
         Description: work.Description,
@@ -58,18 +57,18 @@ const WorkOverview = (props: any) => {
   // let worksList = [];
   // const classes = useStyles();
   let count = 0;
-  let renderWorkItems = [];
-  for (let work of worksList) {
+  const renderWorkItems = [];
+  for (const work of worksList) {
     renderWorkItems.push(renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen }));
     count++;
   }
 
   return (
-    <Fragment>
+    <>
       <Box display='flex' justifyContent='center' p={1}>
         <StyledList>{renderWorkItems}</StyledList>
       </Box>
-    </Fragment>
+    </>
   );
 };
 
@@ -92,7 +91,7 @@ const renderWorkItem = (props: any) => {
           <ListItemLink>
             <ListItemAvatar>
               <Avatar>
-                <img src={`${data.ImgPath}`} alt={data.Name} width='100%' height='auto'></img>
+                <img src={`${data.ImgPath}`} alt={data.Name} width='100%' height='auto' />
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={data.Name} secondary={data.OverView} />
@@ -125,8 +124,8 @@ const Works: React.FC = () => {
   });
 
   return (
-    <Fragment>
-      <Box p={2} ref={ref} id={'Works'}>
+    <>
+      <Box p={2} ref={ref} id='Works'>
         {inView && (
           <>
             <Box display='flex' justifyContent='center' p={1}>
@@ -139,7 +138,7 @@ const Works: React.FC = () => {
           </>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

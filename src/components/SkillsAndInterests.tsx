@@ -17,15 +17,13 @@ const StyledContentWrapper = styled(ContentWrapper)(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-const SkillsAndInterests: React.FC = () => {
-  return (
-    <Fragment>
-      <StyledContentWrapper>
-        <Skills />
-        <Interests />
-      </StyledContentWrapper>
-    </Fragment>
-  );
-};
+const SkillsAndInterests: React.FC = () => (
+  <>
+    <StyledContentWrapper>
+      <Skills />
+      <Interests />
+    </StyledContentWrapper>
+  </>
+);
 
 export default SkillsAndInterests;

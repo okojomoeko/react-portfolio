@@ -4,7 +4,7 @@ import { useWindowHeight } from '@react-hook/window-size';
 
 export default function HeroSection() {
   const onlyHeight = useWindowHeight();
-  let height = onlyHeight > 1200 ? 1200 : onlyHeight;
+  const height = onlyHeight > 1200 ? 1200 : onlyHeight;
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
-        style={{ height: height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        style={{ height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
         Hi, I'm okojomoeko!!!
       </motion.h1>

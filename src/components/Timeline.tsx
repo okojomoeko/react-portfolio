@@ -2,9 +2,9 @@ import { Box, Grid, Typography } from '@mui/material';
 import React, { Fragment } from 'react';
 import { styled } from '@mui/material/styles';
 
+import { motion } from 'framer-motion';
 import aboutTemplate from '../assets/about_template.json';
 import ContentWrapper from '../styles/ContentWrapper';
-import { motion } from 'framer-motion';
 
 // useMediaQuery hookを用いてレスポンシブデザインに対応するのもありか
 
@@ -51,36 +51,34 @@ interface IOneLineProps {
   description: string;
 }
 
-const OneLine = (props: IOneLineProps) => {
-  return (
-    <Fragment>
-      <StyledBox p={2}>
-        <Grid container spacing={3}>
-          <StyledContentImg item xs={4}>
-            <Circle />
-          </StyledContentImg>
-          <StyledContent item xs={8}>
-            <Typography variant='h5'>
-              <b>{props.yearHeader}</b>
-            </Typography>
-            <Typography variant='h5'>
-              <b>{props.mainHeader}</b>
-            </Typography>
-            {props.description}
-          </StyledContent>
-        </Grid>
-      </StyledBox>
-    </Fragment>
-  );
-};
+const OneLine = (props: IOneLineProps) => (
+  <>
+    <StyledBox p={2}>
+      <Grid container spacing={3}>
+        <StyledContentImg item xs={4}>
+          <Circle />
+        </StyledContentImg>
+        <StyledContent item xs={8}>
+          <Typography variant='h5'>
+            <b>{props.yearHeader}</b>
+          </Typography>
+          <Typography variant='h5'>
+            <b>{props.mainHeader}</b>
+          </Typography>
+          {props.description}
+        </StyledContent>
+      </Grid>
+    </StyledBox>
+  </>
+);
 
 const AboutLines = () => {
-  let aboutList = [];
+  const aboutList = [];
 
   // check about size
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (let [aboutProp, value] of Object.entries(aboutTemplate)) {
-    for (let about of value) {
+  for (const [aboutProp, value] of Object.entries(aboutTemplate)) {
+    for (const about of value) {
       aboutList.push(
         <Fragment key={about.YearHeader}>
           <motion.div
@@ -98,19 +96,17 @@ const AboutLines = () => {
       );
     }
   }
-  return <Fragment>{aboutList}</Fragment>;
+  return <>{aboutList}</>;
 };
 
-const Timeline: React.FC = () => {
-  return (
-    <Fragment>
-      <Box display='flex' justifyContent='center'>
-        <ul>
-          <AboutLines />
-        </ul>
-      </Box>
-    </Fragment>
-  );
-};
+const Timeline: React.FC = () => (
+  <>
+    <Box display='flex' justifyContent='center'>
+      <ul>
+        <AboutLines />
+      </ul>
+    </Box>
+  </>
+);
 
 export default Timeline;

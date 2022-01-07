@@ -1,10 +1,10 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import React, { Fragment } from 'react';
 import ComputerIcon from '@mui/icons-material/Computer';
-import skillTemplate from '../assets/skills_template.json';
 import { styled } from '@mui/material/styles';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import skillTemplate from '../assets/skills_template.json';
 
 const StyledCard = styled(Card)({
   width: '100%',
@@ -18,11 +18,11 @@ const StyledComputerIcon = styled(ComputerIcon)({
 });
 
 const SkillsDescription: React.FC = () => {
-  let skillsList = [];
+  const skillsList = [];
 
-  for (let [skillType, value] of Object.entries(skillTemplate)) {
+  for (const [skillType, value] of Object.entries(skillTemplate)) {
     let descList = '/';
-    for (let description of value) {
+    for (const description of value) {
       descList += ` ${description} / `;
     }
     skillsList.push(
@@ -44,7 +44,7 @@ const SkillsDescription: React.FC = () => {
       </Box>
     );
   }
-  return <Fragment>{skillsList}</Fragment>;
+  return <>{skillsList}</>;
 };
 
 const Skills: React.FC = () => {
@@ -54,8 +54,8 @@ const Skills: React.FC = () => {
   });
 
   return (
-    <Fragment>
-      <Box p={2} id={'Skills'} ref={ref}>
+    <>
+      <Box p={2} id='Skills' ref={ref}>
         {inView && (
           <>
             <Box display='flex' justifyContent='center' p={1}>
@@ -67,7 +67,7 @@ const Skills: React.FC = () => {
           </>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

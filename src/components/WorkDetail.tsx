@@ -54,15 +54,15 @@ interface IWorksTechnologyProps {
 }
 
 const WorksTechnology = (props: IWorksTechnologyProps) => {
-  let worksTechnologies = [];
-  for (let data of props.data) {
+  const worksTechnologies = [];
+  for (const data of props.data) {
     worksTechnologies.push(<li>{data}</li>);
   }
   return (
-    <Fragment>
+    <>
       使用技術
       <ul>{worksTechnologies}</ul>
-    </Fragment>
+    </>
   );
 };
 
@@ -73,38 +73,30 @@ interface IWorkDetailProps {
   data: Work[];
 }
 
-export const WorkDetail = (props: IWorkDetailProps) => {
-  return (
-    <Fragment>
-      <Dialog onClose={props.handleClose} aria-labelledby='customized-dialog-title' open={props.open}>
-        <StyledDialogTitle id='customized-dialog-title' onClose={props.handleClose}>
-          {props.index !== -1 ? props.data[props.index].Name : 'Error'}
-        </StyledDialogTitle>
-        <StyledDialogContent dividers>
-          <Box p={2} display='flex' justifyContent='center'>
-            {props.index !== -1 ? (
-              <img
-                src={`${props.data[props.index].ImgPath}`}
-                alt='海の写真'
-                title='空と海'
-                width='70%'
-                height='auto'
-              ></img>
-            ) : (
-              ''
-            )}
-          </Box>
-          <Box p={2}>
-            <Typography gutterBottom>{props.index !== -1 ? props.data[props.index].Description : ''}</Typography>
-          </Box>
-          <Box p={2}>{props.index !== -1 ? <WorksTechnology data={props.data[props.index].Technology} /> : ''}</Box>
-        </StyledDialogContent>
-        <StyledDialogActions>
-          <Button autoFocus onClick={props.handleClose} color='primary'>
-            閉じる
-          </Button>
-        </StyledDialogActions>
-      </Dialog>
-    </Fragment>
-  );
-};
+export const WorkDetail = (props: IWorkDetailProps) => (
+  <>
+    <Dialog onClose={props.handleClose} aria-labelledby='customized-dialog-title' open={props.open}>
+      <StyledDialogTitle id='customized-dialog-title' onClose={props.handleClose}>
+        {props.index !== -1 ? props.data[props.index].Name : 'Error'}
+      </StyledDialogTitle>
+      <StyledDialogContent dividers>
+        <Box p={2} display='flex' justifyContent='center'>
+          {props.index !== -1 ? (
+            <img src={`${props.data[props.index].ImgPath}`} alt='海の写真' title='空と海' width='70%' height='auto' />
+          ) : (
+            ''
+          )}
+        </Box>
+        <Box p={2}>
+          <Typography gutterBottom>{props.index !== -1 ? props.data[props.index].Description : ''}</Typography>
+        </Box>
+        <Box p={2}>{props.index !== -1 ? <WorksTechnology data={props.data[props.index].Technology} /> : ''}</Box>
+      </StyledDialogContent>
+      <StyledDialogActions>
+        <Button autoFocus onClick={props.handleClose} color='primary'>
+          閉じる
+        </Button>
+      </StyledDialogActions>
+    </Dialog>
+  </>
+);

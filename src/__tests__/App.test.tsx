@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
+import pretty from 'pretty';
 import App from '../App';
 import { intersectionObserverMock } from '../__mocks__/intersectionObserverMock';
-import pretty from 'pretty';
 
 beforeEach(() => {
   // setup a DOM element as a render target
