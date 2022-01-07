@@ -15,16 +15,14 @@ afterEach(() => {
 test('renders learn react link', () => {
   const { container, getAllByRole } = render(<App />);
 
-  // const buttons = getAllByRole('button');
+  const buttons = getAllByRole('button');
 
-  // const headerButtons = buttons.slice(0, 3);
+  const headerButtons = buttons.slice(0, 3);
+  const expectHeadderButtons = ['ABOUT', 'SKILLS', 'WORKS'];
+  expect(headerButtons.length).toBe(expectHeadderButtons.length);
 
-  // const expectHeadderButtons = ['ABOUT', 'SKILLS', 'WORKS'];
-
-  // let count = 0;
-  // for (let button of headerButtons) {
-  //   expect(button.outerHTML).toContain(expectHeadderButtons[count]);
-  //   count++;
-  // }
+  for (let i = 0; i < expectHeadderButtons.length; i += 1) {
+    expect(buttons[i].outerHTML).toContain(expectHeadderButtons[i]);
+  }
   expect(pretty(container.innerHTML)).toMatchSnapshot();
 });

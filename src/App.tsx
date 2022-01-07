@@ -9,7 +9,7 @@ import SkillsAndInterests from './components/SkillsAndInterests';
 import HeroSection from './components/Hero';
 
 function App() {
-  const [themeFlagState, setthemeFlagState] = React.useState({
+  const [themeFlagState] = React.useState({
     themeFlag: true,
   });
 
@@ -29,7 +29,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className='App'>
-        <NavBar themeFlagState={themeFlagState} setState={setthemeFlagState} />
+        <NavBar />
         <HeroSection />
         <About />
         <SkillsAndInterests />

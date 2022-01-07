@@ -3,17 +3,6 @@ import { Link } from 'react-scroll';
 import { AppBar, Button, Toolbar } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-interface INavBarProps {
-  themeFlagState: {
-    themeFlag: boolean;
-  };
-  setState: React.Dispatch<
-    React.SetStateAction<{
-      themeFlag: boolean;
-    }>
-  >;
-}
-
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
@@ -27,7 +16,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: 'rgba(0,0,0,0.9)',
 }));
 
-export const NavBar = (props: INavBarProps) => (
+export const NavBar = () => (
   // TODO: dark mode switch
   // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   props.setState({

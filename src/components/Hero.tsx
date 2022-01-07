@@ -16,7 +16,7 @@ export default function HeroSection() {
         viewport={{ once: false }}
         style={{ height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
-        Hi, I'm okojomoeko!!!
+        Hi, I&apos;m okojomoeko!!!
       </motion.h1>
     </>
   );
