@@ -30,6 +30,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 const StyledDialogTitle = (props: DialogTitleProps) => {
   const { children, onClose, ...other } = props;
   return (
+    /* eslint-disable react/jsx-props-no-spreading */
     <DialogTitle {...other}>
       <Typography variant='h6'>{children}</Typography>
       {onClose ? (
@@ -55,8 +56,9 @@ interface IWorksTechnologyProps {
 
 const WorksTechnology = (props: IWorksTechnologyProps) => {
   const worksTechnologies = [];
-  for (const data of props.data) {
-    worksTechnologies.push(<li>{data}</li>);
+  const { data } = props;
+  for (const d of data) {
+    worksTechnologies.push(<li>{d}</li>);
   }
   return (
     <>
@@ -73,30 +75,33 @@ interface IWorkDetailProps {
   data: Work[];
 }
 
-export const WorkDetail = (props: IWorkDetailProps) => (
-  <>
-    <Dialog onClose={props.handleClose} aria-labelledby='customized-dialog-title' open={props.open}>
-      <StyledDialogTitle id='customized-dialog-title' onClose={props.handleClose}>
-        {props.index !== -1 ? props.data[props.index].Name : 'Error'}
-      </StyledDialogTitle>
-      <StyledDialogContent dividers>
-        <Box p={2} display='flex' justifyContent='center'>
-          {props.index !== -1 ? (
-            <img src={`${props.data[props.index].ImgPath}`} alt='海の写真' title='空と海' width='70%' height='auto' />
-          ) : (
-            ''
-          )}
-        </Box>
-        <Box p={2}>
-          <Typography gutterBottom>{props.index !== -1 ? props.data[props.index].Description : ''}</Typography>
-        </Box>
-        <Box p={2}>{props.index !== -1 ? <WorksTechnology data={props.data[props.index].Technology} /> : ''}</Box>
-      </StyledDialogContent>
-      <StyledDialogActions>
-        <Button autoFocus onClick={props.handleClose} color='primary'>
-          閉じる
-        </Button>
-      </StyledDialogActions>
-    </Dialog>
-  </>
-);
+export const WorkDetail = (props: IWorkDetailProps) => {
+  const { handleClose, open, index, data } = props;
+  return (
+    <>
+      <Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
+        <StyledDialogTitle id='customized-dialog-title' onClose={handleClose}>
+          {index !== -1 ? data[index].Name : 'Error'}
+        </StyledDialogTitle>
+        <StyledDialogContent dividers>
+          <Box p={2} display='flex' justifyContent='center'>
+            {index !== -1 ? (
+              <img src={`${data[index].ImgPath}`} alt='海の写真' title='空と海' width='70%' height='auto' />
+            ) : (
+              ''
+            )}
+          </Box>
+          <Box p={2}>
+            <Typography gutterBottom>{index !== -1 ? data[index].Description : ''}</Typography>
+          </Box>
+          <Box p={2}>{index !== -1 ? <WorksTechnology data={data[index].Technology} /> : ''}</Box>
+        </StyledDialogContent>
+        <StyledDialogActions>
+          <Button autoFocus onClick={handleClose} color='primary'>
+            閉じる
+          </Button>
+        </StyledDialogActions>
+      </Dialog>
+    </>
+  );
+};

@@ -51,33 +51,34 @@ interface IOneLineProps {
   description: string;
 }
 
-const OneLine = (props: IOneLineProps) => (
-  <>
-    <StyledBox p={2}>
-      <Grid container spacing={3}>
-        <StyledContentImg item xs={4}>
-          <Circle />
-        </StyledContentImg>
-        <StyledContent item xs={8}>
-          <Typography variant='h5'>
-            <b>{props.yearHeader}</b>
-          </Typography>
-          <Typography variant='h5'>
-            <b>{props.mainHeader}</b>
-          </Typography>
-          {props.description}
-        </StyledContent>
-      </Grid>
-    </StyledBox>
-  </>
-);
+const OneLine = (props: IOneLineProps) => {
+  const { yearHeader, mainHeader, description } = props;
+  return (
+    <>
+      <StyledBox p={2}>
+        <Grid container spacing={3}>
+          <StyledContentImg item xs={4}>
+            <Circle />
+          </StyledContentImg>
+          <StyledContent item xs={8}>
+            <Typography variant='h5'>
+              <b>{yearHeader}</b>
+            </Typography>
+            <Typography variant='h5'>
+              <b>{mainHeader}</b>
+            </Typography>
+            {description}
+          </StyledContent>
+        </Grid>
+      </StyledBox>
+    </>
+  );
+};
 
 const AboutLines = () => {
   const aboutList = [];
 
-  // check about size
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (const [aboutProp, value] of Object.entries(aboutTemplate)) {
+  for (const [, value] of Object.entries(aboutTemplate)) {
     for (const about of value) {
       aboutList.push(
         <Fragment key={about.YearHeader}>

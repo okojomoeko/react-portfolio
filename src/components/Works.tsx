@@ -38,7 +38,7 @@ const StyledList = styled(List)(({ theme }) => ({
 const worksList = (() => {
   const ret: Work[] = [];
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (const [workProp, value] of Object.entries(workTemplate)) {
+  for (const [value] of Object.entries(workTemplate)) {
     for (const work of value) {
       const tempwork: Work = {
         Name: work.Name,
@@ -60,7 +60,7 @@ const WorkOverview = (props: any) => {
   const renderWorkItems = [];
   for (const work of worksList) {
     renderWorkItems.push(renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen }));
-    count++;
+    count += 1;
   }
 
   return (
@@ -71,6 +71,10 @@ const WorkOverview = (props: any) => {
     </>
   );
 };
+function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <ListItem button component='a' {...props} />;
+}
 
 const renderWorkItem = (props: any) => {
   const { index, data, handleOpen } = props;
@@ -101,10 +105,6 @@ const renderWorkItem = (props: any) => {
     </Fragment>
   );
 };
-
-function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
-  return <ListItem button component='a' {...props} />;
-}
 
 const Works: React.FC = () => {
   const [open, setOpen] = React.useState(false);
