@@ -14,7 +14,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: false }}
-        style={{ height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        style={{ height: height, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       >
         Hi, I&apos;m okojomoeko!!!
       </motion.h1>

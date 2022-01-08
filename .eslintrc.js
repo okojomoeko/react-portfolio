@@ -45,6 +45,7 @@ module.exports = {
     'prefer-spread': 1,
     'no-unused-expressions': ['error', { allowShortCircuit: true, allowTernary: true }],
     quotes: ['warn', 'single'],
+    'object-shorthand': ['warn', 'consistent'],
   },
   settings: {
     'import/resolver': {

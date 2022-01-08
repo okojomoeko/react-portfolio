@@ -19,14 +19,17 @@ const StyledComputerIcon = styled(ComputerIcon)({
 
 const SkillsDescription: React.FC = () => {
   const skillsList = [];
+  const [skillType, value] = Object.entries(skillTemplate);
+  const numEntries = skillType.length;
 
-  for (const [skillType, value] of Object.entries(skillTemplate)) {
+  for (let i = 0; i < numEntries; i += 1) {
     let descList = '/';
+    // eslint-disable-next-line no-restricted-syntax
     for (const description of value) {
       descList += ` ${description} / `;
     }
     skillsList.push(
-      <Box display='flex' justifyContent='center' p={1} key={skillType}>
+      <Box display='flex' justifyContent='center' p={1} key={String(skillType[i])}>
         <motion.div
           animate={{ scale: [0, 1] }}
           transition={{ duration: 0.5 }}
@@ -36,7 +39,7 @@ const SkillsDescription: React.FC = () => {
         >
           <StyledCard>
             <CardContent>
-              <Typography variant='h6'>{skillType}</Typography>
+              <Typography variant='h6'>{skillType[i]}</Typography>
               <Typography color='textSecondary'>{descList}</Typography>
             </CardContent>
           </StyledCard>

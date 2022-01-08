@@ -77,26 +77,29 @@ const OneLine = (props: IOneLineProps) => {
 
 const AboutLines = () => {
   const aboutList = [];
-
-  for (const [, value] of Object.entries(aboutTemplate)) {
-    for (const about of value) {
-      aboutList.push(
-        <Fragment key={about.YearHeader}>
-          <motion.div
-            animate={{ scale: [0, 1] }}
-            transition={{ duration: 0.5 }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
-          >
-            <li>
-              <OneLine yearHeader={about.YearHeader} mainHeader={about.MainHeader} description={about.Description} />
-            </li>
-          </motion.div>
-        </Fragment>
-      );
-    }
+  const numEntries = aboutTemplate.AboutData.length;
+  for (let i = 0; i < numEntries; i += 1) {
+    aboutList.push(
+      <Fragment key={aboutTemplate.AboutData[i].YearHeader}>
+        <motion.div
+          animate={{ scale: [0, 1] }}
+          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+        >
+          <li>
+            <OneLine
+              yearHeader={aboutTemplate.AboutData[i].YearHeader}
+              mainHeader={aboutTemplate.AboutData[i].MainHeader}
+              description={aboutTemplate.AboutData[i].Description}
+            />
+          </li>
+        </motion.div>
+      </Fragment>
+    );
   }
+
   return <>{aboutList}</>;
 };
 

@@ -37,46 +37,32 @@ const StyledList = styled(List)(({ theme }) => ({
 
 const worksList = (() => {
   const ret: Work[] = [];
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (const [value] of Object.entries(workTemplate)) {
-    for (const work of value) {
-      const tempwork: Work = {
-        Name: work.Name,
-        OverView: work.OverView,
-        Description: work.Description,
-        ImgPath: `assets/img/${work.ImgName}`,
-        Technology: work.Technology,
-      };
-      ret.push(tempwork);
-    }
+
+  const numEntries = workTemplate.Works.length;
+  for (let i = 0; i < numEntries; i += 1) {
+    ret.push({
+      Name: workTemplate.Works[i].Name,
+      OverView: workTemplate.Works[i].OverView,
+      Description: workTemplate.Works[i].Description,
+      ImgPath: `assets/img/${workTemplate.Works[i].ImgName}`,
+      Technology: workTemplate.Works[i].Technology,
+    });
   }
+
   return ret;
 })();
 
-const WorkOverview = (props: any) => {
-  // let worksList = [];
-  // const classes = useStyles();
-  let count = 0;
-  const renderWorkItems = [];
-  for (const work of worksList) {
-    renderWorkItems.push(renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen }));
-    count += 1;
-  }
-
-  return (
-    <>
-      <Box display='flex' justifyContent='center' p={1}>
-        <StyledList>{renderWorkItems}</StyledList>
-      </Box>
-    </>
-  );
-};
 function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <ListItem button component='a' {...props} />;
 }
+interface RenderWorkItemProps {
+  index: number;
+  data: Work;
+  handleOpen: (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => void;
+}
 
-const renderWorkItem = (props: any) => {
+const renderWorkItem = (props: RenderWorkItemProps) => {
   const { index, data, handleOpen } = props;
   return (
     <Fragment key={data.Name}>
@@ -105,6 +91,32 @@ const renderWorkItem = (props: any) => {
     </Fragment>
   );
 };
+interface WorkOverviewProps {
+  handleOpen: (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => void;
+}
+
+const WorkOverview = (props: WorkOverviewProps) => {
+  const { handleOpen } = props;
+  const numEntries = worksList.length;
+  const renderWorkItems = [];
+  for (let i = 0; i < numEntries; i += 1) {
+    renderWorkItems.push(
+      renderWorkItem({
+        index: i,
+        data: worksList[i],
+        handleOpen: handleOpen,
+      })
+    );
+  }
+
+  return (
+    <>
+      <Box display='flex' justifyContent='center' p={1}>
+        <StyledList>{renderWorkItems}</StyledList>
+      </Box>
+    </>
+  );
+};
 
 const Works: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -113,7 +125,7 @@ const Works: React.FC = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
+  const handleOpen = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
     setSelectedIndex(index);
     setOpen(true);
   };

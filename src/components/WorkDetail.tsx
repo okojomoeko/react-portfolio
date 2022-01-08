@@ -57,9 +57,11 @@ interface IWorksTechnologyProps {
 const WorksTechnology = (props: IWorksTechnologyProps) => {
   const worksTechnologies = [];
   const { data } = props;
-  for (const d of data) {
-    worksTechnologies.push(<li>{d}</li>);
+  const numData = data.length;
+  for (let i = 0; i < numData; i += 1) {
+    worksTechnologies.push(<li>{data[i]}</li>);
   }
+
   return (
     <>
       使用技術
