@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
-import interestTemplate from '../assets/interests_template.json';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { styled } from '@mui/material/styles';
 import { useInView } from 'react-intersection-observer';
 import FadeIn from 'react-fade-in';
 import { motion } from 'framer-motion';
+import interestTemplate from '../assets/interests_template.json';
 
 const StyledCard = styled(Card)({
   width: '100%',
@@ -19,15 +19,26 @@ const StyledFavoriteIcon = styled(FavoriteIcon)({
 });
 
 const InterestsDescription: React.FC = () => {
-  let interestsList = [];
+  const interestsList = [];
 
-  for (let [interestType, value] of Object.entries(interestTemplate)) {
+  const numEntries = interestTemplate.Interests.length;
+  // const [interestType, value] = Object.entries(interestTemplate);
+  // const numEntries = interestType.length;
+  // console.log(interestTemplate);
+
+  // console.log('hogehoge');
+  // console.log(interestType);
+  // console.log('value');
+  // console.log(value);
+  // console.log(numEntries);
+  for (let i = 0; i < numEntries; i += 1) {
     let descList = '/';
-    for (let description of value) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const description of interestTemplate.Interests[i].InterestsList) {
       descList += ` ${description} / `;
     }
     interestsList.push(
-      <Box display='flex' justifyContent='center' p={1} key={interestType}>
+      <Box display='flex' justifyContent='center' p={1} key={String(interestTemplate.Interests[i].Title)}>
         <motion.div
           animate={{ scale: [0, 1] }}
           transition={{ duration: 0.5 }}
@@ -37,7 +48,7 @@ const InterestsDescription: React.FC = () => {
         >
           <StyledCard>
             <CardContent>
-              <Typography variant='h6'>{interestType}</Typography>
+              <Typography variant='h6'>{interestTemplate.Interests[i].Title}</Typography>
               <Typography color='textSecondary'>{descList}</Typography>
             </CardContent>
           </StyledCard>
@@ -46,9 +57,9 @@ const InterestsDescription: React.FC = () => {
     );
   }
   return (
-    <Fragment>
+    <>
       <FadeIn>{interestsList}</FadeIn>
-    </Fragment>
+    </>
   );
 };
 
@@ -58,8 +69,8 @@ const Interests: React.FC = () => {
     triggerOnce: true,
   });
   return (
-    <Fragment>
-      <Box p={2} id={'Interests'} ref={ref}>
+    <>
+      <Box p={2} id='Interests' ref={ref}>
         {inView && (
           <>
             <Box display='flex' justifyContent='center' p={1}>
@@ -70,7 +81,7 @@ const Interests: React.FC = () => {
           </>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

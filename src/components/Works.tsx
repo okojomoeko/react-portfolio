@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
 
-import workTemplate from '../assets/works_template.json';
-import { WorkDetail } from './WorkDetail';
-import { Work } from '../types/PortfolioTypes';
 import {
   Avatar,
   Box,
@@ -14,9 +11,11 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import workTemplate from '../assets/works_template.json';
+import { WorkDetail } from './WorkDetail';
+import { Work } from '../types/PortfolioTypes';
 
 const StyledList = styled(List)(({ theme }) => ({
   root: {
@@ -37,43 +36,33 @@ const StyledList = styled(List)(({ theme }) => ({
 }));
 
 const worksList = (() => {
-  let ret: Work[] = [];
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  for (let [workProp, value] of Object.entries(workTemplate)) {
-    for (let work of value) {
-      let tempwork: Work = {
-        Name: work.Name,
-        OverView: work.OverView,
-        Description: work.Description,
-        ImgPath: `${process.env.PUBLIC_URL}/assets/img/${work.ImgName}`,
-        Technology: work.Technology,
-      };
-      ret.push(tempwork);
-    }
+  const ret: Work[] = [];
+
+  const numEntries = workTemplate.Works.length;
+  for (let i = 0; i < numEntries; i += 1) {
+    ret.push({
+      Name: workTemplate.Works[i].Name,
+      OverView: workTemplate.Works[i].OverView,
+      Description: workTemplate.Works[i].Description,
+      ImgPath: `assets/img/${workTemplate.Works[i].ImgName}`,
+      Technology: workTemplate.Works[i].Technology,
+    });
   }
+
   return ret;
 })();
 
-const WorkOverview = (props: any) => {
-  // let worksList = [];
-  // const classes = useStyles();
-  let count = 0;
-  let renderWorkItems = [];
-  for (let work of worksList) {
-    renderWorkItems.push(renderWorkItem({ index: count, data: work, handleOpen: props.handleOpen }));
-    count++;
-  }
+function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <ListItem button component='a' {...props} />;
+}
+interface RenderWorkItemProps {
+  index: number;
+  data: Work;
+  handleOpen: (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => void;
+}
 
-  return (
-    <Fragment>
-      <Box display='flex' justifyContent='center' p={1}>
-        <StyledList>{renderWorkItems}</StyledList>
-      </Box>
-    </Fragment>
-  );
-};
-
-const renderWorkItem = (props: any) => {
+const renderWorkItem = (props: RenderWorkItemProps) => {
   const { index, data, handleOpen } = props;
   return (
     <Fragment key={data.Name}>
@@ -92,7 +81,7 @@ const renderWorkItem = (props: any) => {
           <ListItemLink>
             <ListItemAvatar>
               <Avatar>
-                <img src={`${data.ImgPath}`} alt={data.Name} width='100%' height='auto'></img>
+                <img src={`${data.ImgPath}`} alt={data.Name} width='100%' height='auto' />
               </Avatar>
             </ListItemAvatar>
             <ListItemText primary={data.Name} secondary={data.OverView} />
@@ -102,10 +91,32 @@ const renderWorkItem = (props: any) => {
     </Fragment>
   );
 };
-
-function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
-  return <ListItem button component='a' {...props} />;
+interface WorkOverviewProps {
+  handleOpen: (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => void;
 }
+
+const WorkOverview = (props: WorkOverviewProps) => {
+  const { handleOpen } = props;
+  const numEntries = worksList.length;
+  const renderWorkItems = [];
+  for (let i = 0; i < numEntries; i += 1) {
+    renderWorkItems.push(
+      renderWorkItem({
+        index: i,
+        data: worksList[i],
+        handleOpen: handleOpen,
+      })
+    );
+  }
+
+  return (
+    <>
+      <Box display='flex' justifyContent='center' p={1}>
+        <StyledList>{renderWorkItems}</StyledList>
+      </Box>
+    </>
+  );
+};
 
 const Works: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -114,7 +125,7 @@ const Works: React.FC = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
+  const handleOpen = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
     setSelectedIndex(index);
     setOpen(true);
   };
@@ -125,8 +136,8 @@ const Works: React.FC = () => {
   });
 
   return (
-    <Fragment>
-      <Box p={2} ref={ref} id={'Works'}>
+    <>
+      <Box p={2} ref={ref} id='Works'>
         {inView && (
           <>
             <Box display='flex' justifyContent='center' p={1}>
@@ -139,7 +150,7 @@ const Works: React.FC = () => {
           </>
         )}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

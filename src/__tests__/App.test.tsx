@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import pretty from 'pretty';
 import App from '../App';
 import { intersectionObserverMock } from '../__mocks__/intersectionObserverMock';
 
@@ -17,13 +18,11 @@ test('renders learn react link', () => {
   const buttons = getAllByRole('button');
 
   const headerButtons = buttons.slice(0, 3);
-
   const expectHeadderButtons = ['ABOUT', 'SKILLS', 'WORKS'];
+  expect(headerButtons.length).toBe(expectHeadderButtons.length);
 
-  let count = 0;
-  for (let button of headerButtons) {
-    expect(button.outerHTML).toContain(expectHeadderButtons[count]);
-    count++;
+  for (let i = 0; i < expectHeadderButtons.length; i += 1) {
+    expect(buttons[i].outerHTML).toContain(expectHeadderButtons[i]);
   }
-  expect(container.innerHTML).toMatchSnapshot();
+  expect(pretty(container.innerHTML)).toMatchSnapshot();
 });
