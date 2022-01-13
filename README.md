@@ -1,17 +1,31 @@
-# esbuild React Typescript Template
+# react-portfolio
 
-> This is a Typecript template for [esbuild create react app](https://github.com/awran5/esbuild-create-react-app) project.
+React を使ったポートフォリオサイト
 
-## What is inside?
+https://okojomoeko.github.io/react-portfolio/
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [esbuild](https://esbuild.github.io/)
-- [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Husky](https://github.com/typicode/husky)
-- [lint-staged](https://github.com/okonet/lint-staged)
-- [live-server](https://github.com/tapio/live-server)
+## Description
 
-### License
+html ベースのポートフォリオから React で管理するようにして、`src/assets/`以下にある`template`を編集することで簡単にポートフォリオの内容を編集・追加できるようにした。
 
-MIT © [awran5](https://github.com/awran5/)
+## Deploy
+
+`main`に push すれば`github actions`によって自動的に`gh-pages`ブランチに push されて deploy 完了。
+
+`main`、`gh-pages`ブランチは保護ブランチにしている。
+
+## Demo
+
+## Requirement
+
+## Usage
+
+## Install
+
+## Contribution
+
+## Licence
+
+## Author
+
+[okojomoeko](https://gitlab.com/okojomoeko)
